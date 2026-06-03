@@ -8,6 +8,7 @@ import PageViewTracker from "@/components/PageViewTracker";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sh3rif.com"),
   title: "Angole Sharif Abubakar - Offensive Security & Cloud Developer",
   description: "Offensive Security Practitioner, Cloud & Web Developer based in Lira City, Uganda. Specializing in penetration testing, AWS cloud infrastructure, web development, and data analytics.",
   keywords: ["offensive security", "ethical hacker", "penetration testing", "cybersecurity Uganda", "AWS cloud developer", "web development Lira", "data analytics"],
