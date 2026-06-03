@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# videos
-/public/videos/*.mp4
+# incomplete downloads
 /public/videos/*.crdownload
