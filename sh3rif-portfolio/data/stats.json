@@ -1,0 +1,28 @@
+{
+  "stats": [
+    {
+      "label": "Projects Completed",
+      "value": 9,
+      "suffix": "+",
+      "icon": "📦"
+    },
+    {
+      "label": "Happy Clients",
+      "value": 10,
+      "suffix": "+",
+      "icon": "🤝"
+    },
+    {
+      "label": "CTF Challenges Solved",
+      "value": 48,
+      "suffix": "+",
+      "icon": "🎯"
+    },
+    {
+      "label": "Months Experience",
+      "value": 16,
+      "suffix": "+",
+      "icon": "⏱️"
+    }
+  ]
+}

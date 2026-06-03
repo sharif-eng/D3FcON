@@ -1,0 +1,274 @@
+import { Shield, Code, Cloud, Database, Award, Target } from "lucide-react";
+import TechBackground from "@/components/TechBackground";
+
+export const metadata = {
+  title: "About - Angole Sharif Abubakar",
+  description: "Learn about my journey from computer science student to offensive security practitioner and full-stack developer",
+};
+
+export default function About() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 pt-24 pb-16 relative">
+      <TechBackground />
+      <div className="max-w-5xl mx-auto px-4 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            About Me
+          </h1>
+          <p className="text-xl text-gray-400">
+            From curious student to cybersecurity professional
+          </p>
+        </div>
+
+        {/* Profile Section */}
+        <div className="bg-slate-800/50 rounded-lg p-8 mb-12 border border-slate-700 animate-slide-up hover:shadow-xl hover:shadow-cyan-500/10 transition-all">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            <div className="md:col-span-1">
+              <div className="w-48 h-48 mx-auto bg-gradient-to-br from-cyan-500 to-cyan-500 rounded-full flex items-center justify-center animate-pulse-glow">
+                <div className="w-44 h-44 bg-slate-900 rounded-full flex items-center justify-center">
+                  <Shield className="w-24 h-24 text-cyan-400 animate-float" />
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-2">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Angole Sharif Abubakar
+              </h2>
+              <p className="text-cyan-400 text-lg mb-4">
+                Offensive Security Practitioner | Cloud & Web Developer
+              </p>
+              <p className="text-gray-300 mb-2">
+                📍 Based in Lira City, Uganda
+              </p>
+              <p className="text-gray-300 mb-2">
+                📧 sharifidris8@gmail.com
+              </p>
+              <p className="text-gray-300">
+                📞 +256 765 721 427
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* My Story */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Target className="w-8 h-8 text-cyan-400 mr-3" />
+            Professional Summary
+          </h2>
+          <div className="space-y-4 text-gray-300 leading-relaxed">
+            <p className="text-lg">
+              <strong className="text-white">Offensive Security Practitioner</strong> and <strong className="text-white">Full-Stack Technology Consultant</strong> based in Lira City, Uganda, specializing in ethical hacking, cloud infrastructure, and secure application development.
+            </p>
+            <p>
+              As a recent Computer Science graduate, I recognized early that academic theory alone wouldn't prepare me for the real-world challenges of cybersecurity and software engineering. This realization drove me to pursue aggressive self-learning across multiple technology domains, ultimately discovering my passion for <strong className="text-cyan-400">offensive security and penetration testing</strong>.
+            </p>
+            <p>
+              My approach to cybersecurity is comprehensive: I don't just break systems—I understand how to build them securely from the ground up. Through hands-on experience in <strong className="text-white">cloud infrastructure (AWS)</strong>, <strong className="text-white">full-stack web development</strong>, and <strong className="text-white">data analytics</strong>, I've developed a holistic understanding of technology stacks that makes me effective at identifying vulnerabilities others might miss.
+            </p>
+            <p>
+              Currently, I'm completing a <strong className="text-white">3-month Red Team internship</strong> covering the complete attack lifecycle—reconnaissance, exploitation, post-exploitation, and professional reporting. I actively participate in CTF competitions on platforms like HackTheBox, TryHackMe, TCM Security, and picoCTF to continuously sharpen my offensive skills.
+            </p>
+            <p>
+              My knowledge of <strong className="text-white">Governance, Risk, and Compliance (GRC)</strong> frameworks ensures I approach security work with the ethical and legal awareness required of professional penetration testers. I understand not just the "how" of hacking, but the "why" and "when" from a business context.
+            </p>
+            <p>
+              While building expertise in offensive security, I offer practical technology services to East African SMEs—helping them implement secure cloud infrastructure, develop custom web applications, and leverage data analytics for business insights. This work funds my continued learning while allowing me to make immediate impact in my community.
+            </p>
+            <p className="text-lg font-semibold text-white pt-4">
+              My mission: Become a recognized cybersecurity professional while helping African businesses build secure, resilient digital infrastructure.
+            </p>
+          </div>
+        </section>
+
+        {/* Philosophy */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6 animate-fade-in">My Approach</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up">
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Security First</h3>
+              <p className="text-gray-300">
+                Every system I build or assess starts with security in mind. Whether it's a web application, 
+                cloud infrastructure, or data pipeline, I design with threat modeling and defense in depth.
+              </p>
+            </div>
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.1s'}}>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Continuous Learning</h3>
+              <p className="text-gray-300">
+                Cybersecurity is always evolving. I'm active on CTF platforms (HTB, THM, TCM, picoCTF), 
+                constantly learning new exploitation techniques, and working toward industry certifications.
+              </p>
+            </div>
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.2s'}}>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Ethical Foundation</h3>
+              <p className="text-gray-300">
+                My GRC (Governance, Risk & Compliance) knowledge ensures I understand not just how to hack systems, 
+                but the legal, ethical, and business context around security work.
+              </p>
+            </div>
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.3s'}}>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Local Impact</h3>
+              <p className="text-gray-300">
+                East African businesses deserve world-class security and technology. I'm committed to helping 
+                local organizations build resilient, secure digital systems.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills & Expertise */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Award className="w-8 h-8 text-cyan-400 mr-3" />
+            Skills & Expertise
+          </h2>
+          
+          <div className="space-y-8">
+            {/* Offensive Security */}
+            <div>
+              <div className="flex items-center mb-4 animate-slide-left">
+                <Shield className="w-6 h-6 text-cyan-400 mr-3 animate-float" />
+                <h3 className="text-2xl font-semibold text-white">Offensive Security (Primary Focus)</h3>
+              </div>
+              <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="text-cyan-400 font-semibold mb-2">Red Team Operations</h4>
+                    <ul className="text-gray-300 space-y-1 text-sm">
+                      <li>• Reconnaissance & OSINT</li>
+                      <li>• Network Scanning & Enumeration</li>
+                      <li>• Exploitation & Privilege Escalation</li>
+                      <li>• Post-Exploitation Techniques</li>
+                      <li>• Security Reporting & Documentation</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-cyan-400 font-semibold mb-2">Tools & Frameworks</h4>
+                    <ul className="text-gray-300 space-y-1 text-sm">
+                      <li>• Metasploit, Burp Suite, Nmap</li>
+                      <li>• Wireshark, John the Ripper</li>
+                      <li>• OWASP Top 10 Testing</li>
+                      <li>• GRC Frameworks & Compliance</li>
+                      <li>• Vulnerability Assessment Tools</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cloud Infrastructure */}
+            <div>
+              <div className="flex items-center mb-4 animate-slide-left">
+                <Cloud className="w-6 h-6 text-cyan-400 mr-3 animate-float" style={{animationDelay: '0.5s'}} />
+                <h3 className="text-2xl font-semibold text-white">Cloud Infrastructure (AWS)</h3>
+              </div>
+              <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">EC2 & VPC</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">S3 & CloudFront</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">IAM & Security Groups</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">RDS & DynamoDB</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Lambda Functions</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">CloudWatch Monitoring</span>
+                </div>
+                <p className="text-gray-300 mt-4 text-sm">
+                  Currently pursuing AWS Solutions Architect certification while building secure, scalable infrastructure for clients
+                </p>
+              </div>
+            </div>
+
+            {/* Web Development */}
+            <div>
+              <div className="flex items-center mb-4 animate-slide-left">
+                <Code className="w-6 h-6 text-cyan-400 mr-3 animate-float" style={{animationDelay: '1s'}} />
+                <h3 className="text-2xl font-semibold text-white">Web Development</h3>
+              </div>
+              <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">React & Next.js</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Node.js & Express</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">TypeScript</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">MongoDB & SQL</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">RESTful APIs</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Tailwind CSS</span>
+                </div>
+                <p className="text-gray-300 mt-4 text-sm">
+                  Building secure, production-ready full-stack applications with a security-first mindset
+                </p>
+              </div>
+            </div>
+
+            {/* Data Analytics */}
+            <div>
+              <div className="flex items-center mb-4 animate-slide-left">
+                <Database className="w-6 h-6 text-cyan-400 mr-3 animate-float" style={{animationDelay: '1.5s'}} />
+                <h3 className="text-2xl font-semibold text-white">Data Analytics</h3>
+              </div>
+              <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Python & Pandas</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Data Visualization</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">SQL Analytics</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Business Intelligence</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Dashboard Creation</span>
+                  <span className="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-lg">Report Automation</span>
+                </div>
+                <p className="text-gray-300 mt-4 text-sm">
+                  Helping businesses make data-driven decisions through clear insights and automated reporting
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications & Education */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6 animate-fade-in">Education & Certifications</h2>
+          <div className="space-y-4">
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10 animate-slide-up">
+              <h3 className="text-xl font-semibold text-white mb-2">Bachelor of Computer Science</h3>
+              <p className="text-gray-400">Recent Graduate</p>
+            </div>
+            
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/10 animate-slide-up" style={{animationDelay: '0.1s'}}>
+              <h3 className="text-xl font-semibold text-white mb-3">Ongoing Learning</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>• AWS Solutions Architect Certification (In Progress)</li>
+                <li>• AWS Cloud Practitioner (In Progress)</li>
+                <li>• Cisco Networking Courses (Completed)</li>
+                <li>• ALX Technology Programs (Completed)</li>
+                <li>• Active CTF Participant: TryHackMe, HackTheBox, TCM Security, picoCTF</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.2s'}}>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-2">Next on the Roadmap</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>• OSCP (Offensive Security Certified Professional)</li>
+                <li>• CEH (Certified Ethical Hacker)</li>
+                <li>• CompTIA Security+</li>
+                <li>• AWS Security Specialty</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Current Focus */}
+        <section>
+          <div className="bg-gradient-to-r from-cyan-500/10 to-cyan-500/10 border border-cyan-500/30 rounded-lg p-8 text-center animate-pulse-glow">
+            <h2 className="text-3xl font-bold text-white mb-4">Current Focus</h2>
+            <p className="text-gray-300 text-lg mb-6">
+              Building my offensive security expertise through hands-on practice, CTF challenges, and real-world 
+              penetration testing while offering cloud, web development, and data analytics services to support 
+              East African businesses.
+            </p>
+            <p className="text-cyan-400 font-semibold text-xl">
+              Goal: Become a recognized cybersecurity professional within the next 6+ months
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}

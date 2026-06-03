@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "slug": "getting-started-offensive-security",
+      "title": "Getting Started with Offensive Security",
+      "excerpt": "My journey into ethical hacking and penetration testing. Learn the roadmap I followed and resources that helped me.",
+      "date": "2026-05-28",
+      "readTime": "8 min read",
+      "category": "Security",
+      "image": null
+    },
+    {
+      "slug": "aws-security-best-practices",
+      "title": "AWS Security Best Practices for SMEs",
+      "excerpt": "Essential security configurations every small business should implement when deploying to AWS.",
+      "date": "2026-05-20",
+      "readTime": "10 min read",
+      "category": "Cloud",
+      "image": null
+    },
+    {
+      "slug": "building-secure-apis",
+      "title": "Building Secure RESTful APIs",
+      "excerpt": "A developer's guide to implementing authentication, authorization, and security best practices in Node.js APIs.",
+      "date": "2026-05-15",
+      "readTime": "12 min read",
+      "category": "Development",
+      "image": null
+    }
+  ]
+}
