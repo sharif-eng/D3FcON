@@ -78,7 +78,10 @@ export default function AdminDashboard() {
         setSaveMessage("✅ Saved successfully! Refreshing...");
         setTimeout(() => window.location.reload(), 1000);
       } else {
-        setSaveMessage("❌ Failed to save. Please try again.");
+        const errorData = await response.json().catch(() => null);
+        setSaveMessage(
+          `❌ Failed to save.${errorData?.error ? ` ${errorData.error}` : " Please try again."}`
+        );
       }
     } catch (error) {
       setSaveMessage("❌ Error saving content.");
@@ -107,9 +110,9 @@ export default function AdminDashboard() {
 
   const handleImageUpload = async (file: File) => {
     setUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("type", activeTab);
+    const uploadFormData = new FormData();
+    uploadFormData.append("file", file);
+    uploadFormData.append("type", activeTab);
 
     const adminPassword = sessionStorage.getItem("adminAuth");
 
@@ -119,13 +122,14 @@ export default function AdminDashboard() {
         headers: {
           "x-admin-auth": adminPassword || ""
         },
-        body: formData,
+        body: uploadFormData,
       });
 
       if (response.ok) {
         const data = await response.json();
-        setUploadedImage(data.path);
-        setFormData({ ...formData, image: data.path });
+        const imagePath = data.path || data.imageUrl;
+        setUploadedImage(imagePath);
+        setFormData((prev: any) => ({ ...prev, image: imagePath }));
       }
     } catch (error) {
       alert("Failed to upload image");

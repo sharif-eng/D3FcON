@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import path from "path";
+
+export const runtime = "nodejs";
 
 function verifyAuth(request: NextRequest): boolean {
   const authHeader = request.headers.get("x-admin-auth");
@@ -19,7 +21,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;
-    const folder = formData.get("folder") as string; // 'projects' or 'blog'
+    const folder = (formData.get("type") || formData.get("folder") || "projects") as string;
 
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
@@ -46,12 +48,13 @@ export async function POST(request: NextRequest) {
     const folderPath = path.join(process.cwd(), "public", "Images", folder);
     const filepath = path.join(folderPath, filename);
 
+    await mkdir(folderPath, { recursive: true });
     await writeFile(filepath, buffer);
 
     // Return the URL path
     const imageUrl = `/Images/${folder}/${filename}`;
 
-    return NextResponse.json({ success: true, imageUrl });
+    return NextResponse.json({ success: true, path: imageUrl, imageUrl });
   } catch (error) {
     console.error("Error uploading image:", error);
     return NextResponse.json({ error: "Failed to upload image" }, { status: 500 });

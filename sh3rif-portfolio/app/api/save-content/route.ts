@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import path from "path";
+
+export const runtime = "nodejs";
 
 function verifyAuth(request: NextRequest): boolean {
   const authHeader = request.headers.get("x-admin-auth");
@@ -37,6 +39,7 @@ export async function POST(request: NextRequest) {
     }
 
     const filePath = path.join(process.cwd(), "data", filename);
+    await mkdir(path.dirname(filePath), { recursive: true });
     await writeFile(filePath, JSON.stringify(content, null, 2));
 
     return NextResponse.json({ success: true, message: "Content saved successfully!" });
