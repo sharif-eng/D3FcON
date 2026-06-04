@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "sh3rif-portfolio/package.json",
+      "use": "@vercel/next"
+    }
+  ]
+}
