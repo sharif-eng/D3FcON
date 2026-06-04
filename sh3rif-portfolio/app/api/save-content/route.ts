@@ -4,10 +4,63 @@ import path from "path";
 
 export const runtime = "nodejs";
 
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_API_TOKEN;
+const GITHUB_OWNER = process.env.GITHUB_OWNER || process.env.GITHUB_REPO_OWNER || "sharif-eng";
+const GITHUB_REPO = process.env.GITHUB_REPO || process.env.GITHUB_REPO_NAME || "D3FcON";
+const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
+
 function verifyAuth(request: NextRequest): boolean {
   const authHeader = request.headers.get("x-admin-auth");
   const adminPassword = process.env.ADMIN_PASSWORD || "sh3rif2026";
   return authHeader === adminPassword;
+}
+
+async function githubFetch(endpoint: string, options: RequestInit = {}) {
+  const url = `https://api.github.com${endpoint}`;
+  const headers = {
+    Authorization: `Bearer ${GITHUB_TOKEN}`,
+    Accept: "application/vnd.github+json",
+    ...(options.headers || {}),
+  };
+  return fetch(url, { ...options, headers });
+}
+
+async function getGithubFileSha(filePath: string): Promise<string | null> {
+  const response = await githubFetch(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}?ref=${GITHUB_BRANCH}`);
+  if (response.status === 404) {
+    return null;
+  }
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`GitHub file lookup failed: ${response.status} ${text}`);
+  }
+  const body = await response.json();
+  return body.sha;
+}
+
+async function updateGithubFile(filePath: string, content: string, message: string, encoding: "utf-8" | "base64" = "utf-8") {
+  const sha = await getGithubFileSha(filePath);
+  const requestBody: any = {
+    message,
+    content: encoding === "utf-8" ? Buffer.from(content, "utf8").toString("base64") : content,
+    branch: GITHUB_BRANCH,
+    encoding: "base64",
+  };
+  if (sha) {
+    requestBody.sha = sha;
+  }
+
+  const response = await githubFetch(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`, {
+    method: "PUT",
+    body: JSON.stringify(requestBody),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`GitHub update failed: ${response.status} ${text}`);
+  }
+
+  return response.json();
 }
 
 export async function POST(request: NextRequest) {
@@ -38,13 +91,21 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
-    const filePath = path.join(process.cwd(), "data", filename);
-    await mkdir(path.dirname(filePath), { recursive: true });
-    await writeFile(filePath, JSON.stringify(content, null, 2));
+    const filePath = `data/${filename}`;
+    const fileContents = JSON.stringify(content, null, 2);
 
-    return NextResponse.json({ success: true, message: "Content saved successfully!" });
+    if (GITHUB_TOKEN) {
+      await updateGithubFile(filePath, fileContents, `Admin saved ${type}`);
+      return NextResponse.json({ success: true, message: "Content saved to GitHub repository." });
+    }
+
+    const localPath = path.join(process.cwd(), filePath);
+    await mkdir(path.dirname(localPath), { recursive: true });
+    await writeFile(localPath, fileContents, "utf8");
+
+    return NextResponse.json({ success: true, message: "Content saved locally." });
   } catch (error) {
     console.error("Error saving content:", error);
-    return NextResponse.json({ error: "Failed to save content" }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Failed to save content" }, { status: 500 });
   }
 }
