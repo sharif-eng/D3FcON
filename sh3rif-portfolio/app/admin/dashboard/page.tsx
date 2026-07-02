@@ -15,18 +15,26 @@ import {
   X,
   Shield
 } from "lucide-react";
-import projectsData from "@/data/projects.json";
-import blogData from "@/data/blog.json";
-import statsData from "@/data/stats.json";
-import platformsData from "@/data/platforms.json";
+
+const GITHUB_OWNER = "sharif-eng";
+const GITHUB_REPO = "D3FcON";
+const GITHUB_BRANCH = "main";
+const BASE_PATH = "sh3rif-portfolio/data";
+
+async function fetchFromGithub(filename: string) {
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${BASE_PATH}/${filename}?t=${Date.now()}`;
+  const res = await fetch(url);
+  return res.json();
+}
 
 export default function AdminDashboard() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"projects" | "blog" | "stats" | "platforms">("projects");
-  const [projects, setProjects] = useState(projectsData.projects);
-  const [blogPosts, setBlogPosts] = useState(blogData.posts);
-  const [stats, setStats] = useState(statsData.stats);
-  const [platforms, setPlatforms] = useState(platformsData.platforms);
+  const [projects, setProjects] = useState<any[]>([]);
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  const [stats, setStats] = useState<any[]>([]);
+  const [platforms, setPlatforms] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -39,7 +47,21 @@ export default function AdminDashboard() {
     const isAuth = sessionStorage.getItem("adminAuth");
     if (!isAuth) {
       router.push("/admin");
+      return;
     }
+    // Load latest data from GitHub directly, not bundled build-time JSON
+    Promise.all([
+      fetchFromGithub("projects.json"),
+      fetchFromGithub("blog.json"),
+      fetchFromGithub("stats.json"),
+      fetchFromGithub("platforms.json"),
+    ]).then(([p, b, s, pl]) => {
+      setProjects(p.projects || []);
+      setBlogPosts(b.posts || []);
+      setStats(s.stats || []);
+      setPlatforms(pl.platforms || []);
+      setLoading(false);
+    });
   }, [router]);
 
   const handleLogout = () => {
@@ -47,17 +69,18 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
-  const saveContent = async () => {
+  const saveContent = async (overrideProjects?: any[]) => {
     setSaving(true);
     setSaveMessage("");
 
     try {
       let type = "";
       let data: any = [];
+      const currentProjects = overrideProjects || projects;
 
       if (activeTab === "projects") {
         type = "projects";
-        data = projects;
+        data = currentProjects;
       } else if (activeTab === "blog") {
         type = "blog";
         data = blogPosts;
@@ -81,8 +104,20 @@ export default function AdminDashboard() {
       });
 
       if (response.ok) {
-        setSaveMessage("✅ Saved successfully! Refreshing...");
-        setTimeout(() => window.location.reload(), 1000);
+        // Auto-update Projects Completed stat when saving projects
+        if (activeTab === "projects") {
+          const updatedStats = stats.map(s =>
+            s.label === "Projects Completed" ? { ...s, value: currentProjects.length } : s
+          );
+          setStats(updatedStats);
+          await fetch("/api/save-content", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-admin-auth": adminPassword || "" },
+            body: JSON.stringify({ type: "stats", data: updatedStats }),
+          });
+        }
+        setSaveMessage("✅ Saved successfully! Rebuilding site...");
+        setTimeout(() => window.location.reload(), 1500);
       } else {
         const errorData = await response.json().catch(() => null);
         setSaveMessage(
@@ -209,6 +244,12 @@ export default function AdminDashboard() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
+        {loading && (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-cyan-400 text-lg animate-pulse">Loading latest data...</div>
+          </div>
+        )}
+        {!loading && (<>
         {saveMessage && (
           <div className={`mb-6 p-4 rounded-lg border ${
             saveMessage.includes("✅") 

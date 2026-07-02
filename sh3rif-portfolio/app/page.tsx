@@ -31,9 +31,11 @@ export default function Home() {
             <Typewriter 
               texts={[
                 "Offensive Security Practitioner",
-                "Cloud & Web Developer",
-                "Penetration Testing Specialist",
-                "AWS Solutions Architect"
+                "SOC Analysts",
+                "Penetration Tester",
+                "AWS Solutions Architect",
+                "Web Developer",
+                "CS Instructor"
               ]}
               typingSpeed={80}
               deletingSpeed={50}
