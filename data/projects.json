@@ -1,3 +1,35 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "id": "internship-management",
+      "title": "Internship Management System",
+      "category": "development",
+      "description": "University final year project - Full-stack web application for managing student internships, company placements, and evaluation tracking.",
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Full-Stack"
+      ],
+      "image": null,
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": "aws-infrastructure",
+      "title": "AWS Secure Infrastructure",
+      "category": "cloud",
+      "description": "Designed and deployed secure, scalable AWS cloud infrastructure for small business with proper IAM, VPC configuration, and monitoring.",
+      "tags": [
+        "AWS",
+        "EC2",
+        "VPC",
+        "Security",
+        "Infrastructure"
+      ],
+      "image": null,
+      "github": "#",
+      "demo": null
+    }
+  ]
 }
