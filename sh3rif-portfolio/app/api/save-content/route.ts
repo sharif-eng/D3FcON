@@ -87,6 +87,10 @@ export async function POST(request: NextRequest) {
         filename = "stats.json";
         content = { stats: data };
         break;
+      case "platforms":
+        filename = "platforms.json";
+        content = { platforms: data };
+        break;
       default:
         return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }

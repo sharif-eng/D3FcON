@@ -75,6 +75,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const file = formData.get("file") as File;
     const folder = (formData.get("type") || formData.get("folder") || "projects") as string;
+    const uploadFolder = folder === "platforms" ? "platforms" : folder;
 
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });

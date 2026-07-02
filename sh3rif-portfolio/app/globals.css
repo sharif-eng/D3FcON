@@ -88,6 +88,14 @@
     background-size: 200% 200%;
     animation: gradient 3s ease infinite;
   }
+
+  /* Marquee scrolling animation */
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes fadeIn {
@@ -211,6 +219,15 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 

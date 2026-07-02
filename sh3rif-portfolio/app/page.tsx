@@ -4,6 +4,7 @@ import { ArrowRight, Github, Linkedin, Mail, Shield, Cloud, Code, Database } fro
 import StatsCounter from "@/components/StatsCounter";
 import VideoBackground from "@/components/VideoBackground";
 import Typewriter from "@/components/Typewriter";
+import platformsData from "@/data/platforms.json";
 
 export default function Home() {
   return (
@@ -269,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* CTF Activity */}
-      <section className="py-20 px-4 bg-slate-800/50">
+      <section className="py-20 px-4 bg-slate-800/50 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Active CTF Participant
@@ -277,32 +278,23 @@ export default function Home() {
           <p className="text-gray-400 mb-12">
             Continuously sharpening my offensive security skills through Capture The Flag challenges
           </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <a href="https://tryhackme.com/p/yourusername" target="_blank" rel="noopener noreferrer" className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-all text-center transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
-              <div className="flex justify-center mb-3">
-                <Image src="/Images/THM.png" alt="TryHackMe" width={64} height={64} className="rounded-full object-cover" />
-              </div>
-              <div className="text-gray-400 text-sm">TryHackMe</div>
-            </a>
-            <a href="https://app.hackthebox.com/profile/yourusername" target="_blank" rel="noopener noreferrer" className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-all text-center transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
-              <div className="flex justify-center mb-3">
-                <Image src="/Images/HTB.png" alt="HackTheBox" width={64} height={64} className="rounded-full object-cover" />
-              </div>
-              <div className="text-gray-400 text-sm">HackTheBox</div>
-            </a>
-            <a href="https://tcm-sec.com" target="_blank" rel="noopener noreferrer" className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-all text-center transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
-              <div className="flex justify-center mb-3">
-                <Image src="/Images/TCM.png" alt="TCM Security" width={64} height={64} className="rounded-full object-cover" />
-              </div>
-              <div className="text-gray-400 text-sm">TCM Security</div>
-            </a>
-            <a href="https://picoctf.org" target="_blank" rel="noopener noreferrer" className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-all text-center transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
-              <div className="flex justify-center mb-3">
-                <Image src="/Images/picoCTF.png" alt="picoCTF" width={64} height={64} className="rounded-full object-cover" />
-              </div>
-              <div className="text-gray-400 text-sm">picoCTF</div>
-            </a>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="flex gap-12 animate-marquee whitespace-nowrap">
+            {[...platformsData.platforms, ...platformsData.platforms].map((platform, i) => (
+              <a
+                key={`${platform.id}-${i}`}
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col items-center gap-3 group flex-shrink-0"
+              >
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-slate-700 group-hover:border-cyan-500 transition-all group-hover:shadow-lg group-hover:shadow-cyan-500/30">
+                  <Image src={platform.logo} alt={platform.name} width={80} height={80} className="w-full h-full object-cover" />
+                </div>
+                <span className="text-gray-400 text-sm group-hover:text-cyan-400 transition-colors">{platform.name}</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

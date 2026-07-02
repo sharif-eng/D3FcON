@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Shield, Code, Cloud, Database, Award, Target } from "lucide-react";
 import TechBackground from "@/components/TechBackground";
 
@@ -25,10 +26,14 @@ export default function About() {
         <div className="bg-slate-800/50 rounded-lg p-8 mb-12 border border-slate-700 animate-slide-up hover:shadow-xl hover:shadow-cyan-500/10 transition-all">
           <div className="grid md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-1">
-              <div className="w-48 h-48 mx-auto bg-gradient-to-br from-cyan-500 to-cyan-500 rounded-full flex items-center justify-center animate-pulse-glow">
-                <div className="w-44 h-44 bg-slate-900 rounded-full flex items-center justify-center">
-                  <Shield className="w-24 h-24 text-cyan-400 animate-float" />
-                </div>
+              <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-cyan-500 animate-pulse-glow shadow-xl shadow-cyan-500/30">
+                <Image
+                  src="/Images/Profile-Prof.png"
+                  alt="Angole Sharif Abubakar"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div className="md:col-span-2">
@@ -59,25 +64,16 @@ export default function About() {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p className="text-lg">
-              <strong className="text-white">Offensive Security Practitioner</strong> and <strong className="text-white">Full-Stack Technology Consultant</strong> based in Lira City, Uganda, specializing in ethical hacking, cloud infrastructure, and secure application development.
+              Cybersecurity professional based in Lira City, Uganda, building toward a career as a <strong className="text-cyan-400">Red Teamer</strong> with expertise across <strong className="text-white">offensive security</strong>, <strong className="text-white">defensive security</strong>, <strong className="text-white">cloud security</strong>, and <strong className="text-white">AI security</strong>.
             </p>
             <p>
-              As a recent Computer Science graduate, I recognized early that academic theory alone wouldn't prepare me for the real-world challenges of cybersecurity and software engineering. This realization drove me to pursue aggressive self-learning across multiple technology domains, ultimately discovering my passion for <strong className="text-cyan-400">offensive security and penetration testing</strong>.
+              My approach combines both sides of cybersecurity: understanding how systems are defended and how they are attacked. I completed a <strong className="text-white">Red Team internship</strong> covering the full attack lifecycle, including reconnaissance, exploitation, post-exploitation, and professional reporting, and I continue strengthening my skills through hands-on labs, CTF competitions, and continuous self-directed learning.
             </p>
             <p>
-              My approach to cybersecurity is comprehensive: I don't just break systems—I understand how to build them securely from the ground up. Through hands-on experience in <strong className="text-white">cloud infrastructure (AWS)</strong>, <strong className="text-white">full-stack web development</strong>, and <strong className="text-white">data analytics</strong>, I've developed a holistic understanding of technology stacks that makes me effective at identifying vulnerabilities others might miss.
-            </p>
-            <p>
-              Currently, I'm completing a <strong className="text-white">3-month Red Team internship</strong> covering the complete attack lifecycle—reconnaissance, exploitation, post-exploitation, and professional reporting. I actively participate in CTF competitions on platforms like HackTheBox, TryHackMe, TCM Security, and picoCTF to continuously sharpen my offensive skills.
-            </p>
-            <p>
-              My knowledge of <strong className="text-white">Governance, Risk, and Compliance (GRC)</strong> frameworks ensures I approach security work with the ethical and legal awareness required of professional penetration testers. I understand not just the "how" of hacking, but the "why" and "when" from a business context.
-            </p>
-            <p>
-              While building expertise in offensive security, I offer practical technology services to East African SMEs—helping them implement secure cloud infrastructure, develop custom web applications, and leverage data analytics for business insights. This work funds my continued learning while allowing me to make immediate impact in my community.
+              My technical background extends to <strong className="text-white">AWS cloud infrastructure</strong>, <strong className="text-white">secure web application development</strong>, and <strong className="text-white">data analytics</strong>, giving me a practical understanding of modern attack surfaces and secure system design. I also provide cloud infrastructure, web development, and data analytics solutions to East African SMEs, applying a security-first mindset to solve real business challenges.
             </p>
             <p className="text-lg font-semibold text-white pt-4">
-              My mission: Become a recognized cybersecurity professional while helping African businesses build secure, resilient digital infrastructure.
+              My mission: Become a Red Teamer capable of assessing and strengthening applications, cloud environments, and AI systems by combining deep offensive expertise with a solid understanding of defensive security.
             </p>
           </div>
         </section>

@@ -17,13 +17,15 @@ import {
 import projectsData from "@/data/projects.json";
 import blogData from "@/data/blog.json";
 import statsData from "@/data/stats.json";
+import platformsData from "@/data/platforms.json";
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"projects" | "blog" | "stats">("projects");
+  const [activeTab, setActiveTab] = useState<"projects" | "blog" | "stats" | "platforms">("projects");
   const [projects, setProjects] = useState(projectsData.projects);
   const [blogPosts, setBlogPosts] = useState(blogData.posts);
   const [stats, setStats] = useState(statsData.stats);
+  const [platforms, setPlatforms] = useState(platformsData.platforms);
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -58,6 +60,9 @@ export default function AdminDashboard() {
       } else if (activeTab === "blog") {
         type = "blog";
         data = blogPosts;
+      } else if (activeTab === "platforms") {
+        type = "platforms";
+        data = platforms;
       } else {
         type = "stats";
         data = stats;
@@ -97,6 +102,8 @@ export default function AdminDashboard() {
       setFormData({ id: "", title: "", category: "security", description: "", tags: [], github: "", demo: null, image: null });
     } else if (activeTab === "blog") {
       setFormData({ slug: "", title: "", excerpt: "", date: "", readTime: "", category: "", image: null });
+    } else if (activeTab === "platforms") {
+      setFormData({ id: "", name: "", logo: "", url: "" });
     }
     setShowForm(true);
   };
@@ -129,7 +136,10 @@ export default function AdminDashboard() {
         const data = await response.json();
         const imagePath = data.path || data.imageUrl;
         setUploadedImage(imagePath);
-        setFormData((prev: any) => ({ ...prev, image: imagePath }));
+        setFormData((prev: any) => ({
+          ...prev,
+          ...(activeTab === "platforms" ? { logo: imagePath } : { image: imagePath })
+        }));
       }
     } catch (error) {
       alert("Failed to upload image");
@@ -155,6 +165,14 @@ export default function AdminDashboard() {
         newPosts.push(formData);
       }
       setBlogPosts(newPosts);
+    } else if (activeTab === "platforms") {
+      const newPlatforms = [...platforms];
+      if (editingIndex !== null) {
+        newPlatforms[editingIndex] = formData;
+      } else {
+        newPlatforms.push(formData);
+      }
+      setPlatforms(newPlatforms);
     }
     setShowForm(false);
     setFormData({});
@@ -227,6 +245,15 @@ export default function AdminDashboard() {
           >
             <BarChart3 className="w-5 h-5" />
             Statistics ({stats.length})
+          </button>
+          <button
+            onClick={() => setActiveTab("platforms")}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+              activeTab === "platforms" ? "bg-cyan-500 text-white" : "bg-slate-800 text-gray-400 hover:bg-slate-700"
+            }`}
+          >
+            <Shield className="w-5 h-5" />
+            Platforms ({platforms.length})
           </button>
         </div>
 
@@ -598,6 +625,144 @@ export default function AdminDashboard() {
                       }}
                       className="w-20 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white text-center focus:outline-none focus:border-cyan-500"
                     />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "platforms" && (
+          <div>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-white">Manage Learning Platforms</h2>
+              <div className="flex gap-3">
+                <button
+                  onClick={openAddForm}
+                  className="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg transition-all font-semibold"
+                >
+                  <Plus className="w-5 h-5" />
+                  Add Platform
+                </button>
+                <button
+                  onClick={saveContent}
+                  disabled={saving}
+                  className="flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-500 text-white rounded-lg transition-all font-semibold"
+                >
+                  <Save className="w-5 h-5" />
+                  {saving ? "Saving..." : "Save & Publish"}
+                </button>
+              </div>
+            </div>
+
+            {showForm && (
+              <div className="bg-slate-800/90 rounded-lg p-6 border border-cyan-500/30 mb-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xl font-bold text-white">
+                    {editingIndex !== null ? "Edit Platform" : "Add New Platform"}
+                  </h3>
+                  <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-white">
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-white mb-2">Platform ID</label>
+                    <input
+                      type="text"
+                      value={formData.id || ""}
+                      onChange={(e) => setFormData({ ...formData, id: e.target.value })}
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-cyan-500"
+                      placeholder="tryhackme"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white mb-2">Platform Name</label>
+                    <input
+                      type="text"
+                      value={formData.name || ""}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-cyan-500"
+                      placeholder="TryHackMe"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white mb-2">Profile URL</label>
+                    <input
+                      type="text"
+                      value={formData.url || ""}
+                      onChange={(e) => setFormData({ ...formData, url: e.target.value })}
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-cyan-500"
+                      placeholder="https://tryhackme.com/p/yourusername"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white mb-2">Platform Logo</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => e.target.files?.[0] && handleImageUpload(e.target.files[0])}
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-cyan-500"
+                    />
+                    {uploading && <p className="text-cyan-400 text-sm mt-2">Uploading...</p>}
+                    {(uploadedImage || formData.logo) && (
+                      <div className="mt-3 flex items-center gap-3">
+                        <Image
+                          src={uploadedImage || formData.logo}
+                          alt="Logo preview"
+                          width={64}
+                          height={64}
+                          className="rounded-full border border-cyan-500/30 object-cover"
+                        />
+                        <p className="text-gray-400 text-xs">{uploadedImage || formData.logo}</p>
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={handleSubmit}
+                    className="w-full py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold"
+                  >
+                    {editingIndex !== null ? "Update Platform" : "Add Platform"}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {platforms.map((platform, index) => (
+                <div key={platform.id} className="bg-slate-800/50 rounded-lg p-6 border border-slate-700 hover:border-cyan-500/50 transition-all">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src={platform.logo}
+                        alt={platform.name}
+                        width={56}
+                        height={56}
+                        className="rounded-full object-cover border border-slate-600"
+                      />
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">{platform.name}</h3>
+                        <p className="text-gray-400 text-xs truncate max-w-[200px]">{platform.url}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openEditForm(platform, index)}
+                        className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg transition-all"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (confirm("Delete this platform?")) {
+                            setPlatforms(platforms.filter((_, i) => i !== index));
+                          }
+                        }}
+                        className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg transition-all"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

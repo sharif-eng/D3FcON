@@ -1,0 +1,28 @@
+{
+  "platforms": [
+    {
+      "id": "tryhackme",
+      "name": "TryHackMe",
+      "logo": "/Images/THM.png",
+      "url": "https://tryhackme.com/p/yourusername"
+    },
+    {
+      "id": "hackthebox",
+      "name": "HackTheBox",
+      "logo": "/Images/HTB.png",
+      "url": "https://app.hackthebox.com/profile/yourusername"
+    },
+    {
+      "id": "tcmsecurity",
+      "name": "TCM Security",
+      "logo": "/Images/TCM.png",
+      "url": "https://tcm-sec.com"
+    },
+    {
+      "id": "picoctf",
+      "name": "picoCTF",
+      "logo": "/Images/picoCTF.png",
+      "url": "https://picoctf.org"
+    }
+  ]
+}
