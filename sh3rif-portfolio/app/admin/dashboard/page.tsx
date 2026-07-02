@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { 
@@ -70,64 +69,60 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
-  const saveContent = async (overrideProjects?: any[] | React.MouseEvent<HTMLButtonElement>) => {
-    if (overrideProjects && !Array.isArray(overrideProjects)) overrideProjects = undefined;
+  const postToApi = async (type: string, data: any[]) => {
+    const adminPassword = sessionStorage.getItem("adminAuth");
+    const res = await fetch("/api/save-content", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-admin-auth": adminPassword || "" },
+      body: JSON.stringify({ type, data }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || "Failed to save");
+    }
+  };
+
+  const saveProjects = async (data: any[]) => {
     setSaving(true);
     setSaveMessage("");
-
     try {
-      let type = "";
-      let data: any = [];
-      const currentProjects = overrideProjects || projects;
+      await postToApi("projects", data);
+      const updatedStats = stats.map(s =>
+        s.label === "Projects Completed" ? { ...s, value: data.length } : s
+      );
+      setStats(updatedStats);
+      await postToApi("stats", updatedStats);
+      setSaveMessage("✅ Saved! Refreshing in 4s...");
+      setTimeout(() => window.location.reload(), 4000);
+    } catch (e: any) {
+      setSaveMessage(`❌ ${e.message}`);
+    } finally {
+      setSaving(false);
+    }
+  };
 
+  const saveContent = async () => {
+    setSaving(true);
+    setSaveMessage("");
+    try {
       if (activeTab === "projects") {
-        type = "projects";
-        data = currentProjects;
-      } else if (activeTab === "blog") {
-        type = "blog";
-        data = blogPosts;
-      } else if (activeTab === "platforms") {
-        type = "platforms";
-        data = platforms;
-      } else {
-        type = "stats";
-        data = stats;
-      }
-
-      const adminPassword = sessionStorage.getItem("adminAuth");
-
-      const response = await fetch("/api/save-content", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "x-admin-auth": adminPassword || ""
-        },
-        body: JSON.stringify({ type, data }),
-      });
-
-      if (response.ok) {
-        // Auto-update Projects Completed stat when saving projects
-        if (activeTab === "projects") {
-          const updatedStats = stats.map(s =>
-            s.label === "Projects Completed" ? { ...s, value: currentProjects.length } : s
-          );
-          setStats(updatedStats);
-          await fetch("/api/save-content", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "x-admin-auth": adminPassword || "" },
-            body: JSON.stringify({ type: "stats", data: updatedStats }),
-          });
-        }
-        setSaveMessage("✅ Saved successfully! Refreshing...");
-        setTimeout(() => window.location.reload(), 4000);
-      } else {
-        const errorData = await response.json().catch(() => null);
-        setSaveMessage(
-          `❌ Failed to save.${errorData?.error ? ` ${errorData.error}` : " Please try again."}`
+        await postToApi("projects", projects);
+        const updatedStats = stats.map(s =>
+          s.label === "Projects Completed" ? { ...s, value: projects.length } : s
         );
+        setStats(updatedStats);
+        await postToApi("stats", updatedStats);
+      } else if (activeTab === "blog") {
+        await postToApi("blog", blogPosts);
+      } else if (activeTab === "platforms") {
+        await postToApi("platforms", platforms);
+      } else {
+        await postToApi("stats", stats);
       }
-    } catch (error) {
-      setSaveMessage("❌ Error saving content.");
+      setSaveMessage("✅ Saved! Refreshing in 4s...");
+      setTimeout(() => window.location.reload(), 4000);
+    } catch (e: any) {
+      setSaveMessage(`❌ ${e.message}`);
     } finally {
       setSaving(false);
     }
@@ -197,7 +192,7 @@ export default function AdminDashboard() {
       setProjects(newProjects);
       setShowForm(false);
       setFormData({});
-      saveContent(newProjects);
+      saveProjects(newProjects);
       return;
     } else if (activeTab === "blog") {
       const newPosts = [...blogPosts];
@@ -465,7 +460,7 @@ export default function AdminDashboard() {
                           if (confirm("Delete this project?")) {
                             const updated = projects.filter((_, i) => i !== index);
                             setProjects(updated);
-                            saveContent(updated);
+                            saveProjects(updated);
                           }
                         }}
                         className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg transition-all"
