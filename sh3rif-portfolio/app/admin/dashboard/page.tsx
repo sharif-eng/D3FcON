@@ -116,8 +116,8 @@ export default function AdminDashboard() {
             body: JSON.stringify({ type: "stats", data: updatedStats }),
           });
         }
-        setSaveMessage("✅ Saved successfully! Rebuilding site...");
-        setTimeout(() => window.location.reload(), 1500);
+        setSaveMessage("✅ Saved successfully! Refreshing...");
+        setTimeout(() => window.location.reload(), 4000);
       } else {
         const errorData = await response.json().catch(() => null);
         setSaveMessage(
@@ -193,6 +193,10 @@ export default function AdminDashboard() {
         newProjects.push(formData);
       }
       setProjects(newProjects);
+      setShowForm(false);
+      setFormData({});
+      saveContent(newProjects);
+      return;
     } else if (activeTab === "blog") {
       const newPosts = [...blogPosts];
       if (editingIndex !== null) {
@@ -457,7 +461,9 @@ export default function AdminDashboard() {
                       <button
                         onClick={() => {
                           if (confirm("Delete this project?")) {
-                            setProjects(projects.filter((_, i) => i !== index));
+                            const updated = projects.filter((_, i) => i !== index);
+                            setProjects(updated);
+                            saveContent(updated);
                           }
                         }}
                         className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg transition-all"
