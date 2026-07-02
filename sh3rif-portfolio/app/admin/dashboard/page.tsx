@@ -445,7 +445,7 @@ export default function AdminDashboard() {
                       <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                       <p className="text-gray-400 text-sm mb-3">{project.description}</p>
                       <div className="flex flex-wrap gap-2 mb-3">
-                        {project.tags.map((tag) => (
+                        {project.tags.map((tag: string) => (
                           <span key={tag} className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">{tag}</span>
                         ))}
                       </div>
