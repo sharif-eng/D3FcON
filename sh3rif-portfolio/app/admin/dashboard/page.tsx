@@ -12,7 +12,8 @@ import {
   Edit,
   Trash2,
   Save,
-  X
+  X,
+  Shield
 } from "lucide-react";
 import projectsData from "@/data/projects.json";
 import blogData from "@/data/blog.json";
