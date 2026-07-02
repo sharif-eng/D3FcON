@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { 
@@ -69,7 +70,8 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
-  const saveContent = async (overrideProjects?: any[]) => {
+  const saveContent = async (overrideProjects?: any[] | React.MouseEvent<HTMLButtonElement>) => {
+    if (overrideProjects && !Array.isArray(overrideProjects)) overrideProjects = undefined;
     setSaving(true);
     setSaveMessage("");
 
