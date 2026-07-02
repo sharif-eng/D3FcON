@@ -1,22 +1,6 @@
 {
   "projects": [
     {
-      "id": "red-team-internship",
-      "title": "Red Team Internship Engagement",
-      "category": "security",
-      "description": "Comprehensive 3-month Red Team internship covering the complete attack lifecycle from reconnaissance to post-exploitation and detailed reporting.",
-      "tags": [
-        "Penetration Testing",
-        "Metasploit",
-        "Nmap",
-        "Burp Suite",
-        "Red Team"
-      ],
-      "image": null,
-      "github": "#",
-      "demo": null
-    },
-    {
       "id": "internship-management",
       "title": "Internship Management System",
       "category": "development",
@@ -46,18 +30,6 @@
       "image": null,
       "github": "#",
       "demo": null
-    },
-    {
-      "id": "12",
-      "title": "aaaaa",
-      "category": "security",
-      "description": "qqqqqqqqqqqqqqqqqq",
-      "tags": [
-        "react"
-      ],
-      "github": "",
-      "demo": null,
-      "image": null
     }
   ]
 }
