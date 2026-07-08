@@ -4,8 +4,8 @@ import Link from "next/link";
 import TechBackground from "@/components/TechBackground";
 
 export const metadata = {
-  title: "Services - Angole Sharif Abubakar",
-  description: "Cybersecurity consulting, cloud infrastructure, web development, and data analytics services for East African businesses",
+  title: "Services - SharifLab",
+  description: "A growing portfolio of practical services and projects in cybersecurity, cloud, web development, data analytics, and virtual assistance",
 };
 
 export default function Services() {
@@ -16,10 +16,10 @@ export default function Services() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Services
+            Services & Focus Areas
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Building secure, scalable digital infrastructure for East African businesses
+            A growing collection of practical work in the areas I am actively learning, building, and offering support for.
           </p>
         </div>
 
@@ -137,8 +137,7 @@ export default function Services() {
 
             <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
               <p className="text-cyan-300 text-sm">
-                <strong>Note:</strong> Building expertise through hands-on Red Team experience and continuous CTF practice. 
-                Ideal for SMEs looking for practical, affordable security assessments.
+                <strong>Note:</strong> This is part of SharifLab’s growth path: learning through real practice, building confidence through projects, and offering support where it is useful.
               </p>
             </div>
           </section>

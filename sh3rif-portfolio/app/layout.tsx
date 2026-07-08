@@ -9,9 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sh3rif.com"),
-  title: "Angole Sharif Abubakar - Offensive Security & Cloud Developer",
-  description: "Offensive Security Practitioner, Cloud & Web Developer based in Lira City, Uganda. Specializing in penetration testing, AWS cloud infrastructure, web development, and data analytics.",
-  keywords: ["offensive security", "ethical hacker", "penetration testing", "cybersecurity Uganda", "AWS cloud developer", "web development Lira", "data analytics"],
+  title: "SharifLab - Angole Sharif Abubakar",
+  description: "SharifLab — a builder's portfolio by Angole Sharif Abubakar. Shipping projects in Cybersecurity, Cloud, Web Development, Data Analytics, and Virtual Assistance.",
+  keywords: ["SharifLab", "offensive security", "ethical hacker", "penetration testing", "cybersecurity Uganda", "AWS cloud developer", "web development", "data analytics", "virtual assistance"],
   authors: [{ name: "Angole Sharif Abubakar" }],
   icons: {
     icon: '/Images/Logo_Fav.png',
@@ -19,18 +19,18 @@ export const metadata: Metadata = {
     apple: '/Images/Logo_Fav.png',
   },
   openGraph: {
-    title: "Angole Sharif Abubakar - Offensive Security & Cloud Developer",
-    description: "Offensive Security Practitioner helping East African businesses build secure digital infrastructure",
+    title: "SharifLab - Angole Sharif Abubakar",
+    description: "SharifLab — shipping projects in Cybersecurity, Cloud, Web Dev, Data Analytics & Virtual Assistance",
     url: "https://sh3rif.com",
-    siteName: "Angole Sharif Abubakar",
+    siteName: "SharifLab",
     locale: "en_US",
     type: "website",
     images: ['/Images/Logo_Fav.png'],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Angole Sharif Abubakar - Offensive Security & Cloud Developer",
-    description: "Offensive Security Practitioner | Cloud & Web Developer",
+    title: "SharifLab - Angole Sharif Abubakar",
+    description: "SharifLab | Cybersecurity · Cloud · Web Dev · Data Analytics · Virtual Assistance",
     images: ['/Images/Logo_Fav.png'],
   },
 };

@@ -14,7 +14,7 @@
       "id": "internship-management",
       "title": "Internship Management System",
       "category": "development",
-      "description": "University final year project - Full-stack web application for managing student internships, company placements, and evaluation tracking.",
+      "description": "University final year project — full-stack web application for managing student internships, company placements, and evaluation tracking.",
       "tags": ["React", "Node.js", "MongoDB", "Full-Stack"],
       "image": null,
       "github": "#",
@@ -28,6 +28,26 @@
       "tags": ["AWS", "EC2", "VPC", "Security", "Infrastructure"],
       "image": null,
       "github": "#",
+      "demo": null
+    },
+    {
+      "id": "data-analytics-dashboard",
+      "title": "Business Analytics Dashboard",
+      "category": "data",
+      "description": "Interactive data dashboard built to visualize business KPIs, track trends, and automate reporting for a small business. Coming soon.",
+      "tags": ["Python", "Pandas", "Data Visualization", "SQL"],
+      "image": null,
+      "github": null,
+      "demo": null
+    },
+    {
+      "id": "va-workflow-automation",
+      "title": "VA Workflow Automation",
+      "category": "va",
+      "description": "Automated admin workflows including email triage, scheduling, and document management using AI-assisted tools. Coming soon.",
+      "tags": ["Automation", "AI Tools", "Productivity", "Admin"],
+      "image": null,
+      "github": null,
       "demo": null
     }
   ]

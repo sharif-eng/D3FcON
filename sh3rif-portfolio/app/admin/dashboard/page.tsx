@@ -92,8 +92,7 @@ export default function AdminDashboard() {
       );
       setStats(updatedStats);
       await postToApi("stats", updatedStats);
-      setSaveMessage("✅ Saved! Refreshing in 4s...");
-      setTimeout(() => window.location.reload(), 4000);
+      setSaveMessage("✅ Saved to GitHub! Site will rebuild in ~1 minute.");
     } catch (e: any) {
       setSaveMessage(`❌ ${e.message}`);
     } finally {
@@ -119,8 +118,7 @@ export default function AdminDashboard() {
       } else {
         await postToApi("stats", stats);
       }
-      setSaveMessage("✅ Saved! Refreshing in 4s...");
-      setTimeout(() => window.location.reload(), 4000);
+      setSaveMessage("✅ Saved to GitHub! Site will rebuild in ~1 minute.");
     } catch (e: any) {
       setSaveMessage(`❌ ${e.message}`);
     } finally {
@@ -364,6 +362,8 @@ export default function AdminDashboard() {
                       <option value="security">Security</option>
                       <option value="development">Development</option>
                       <option value="cloud">Cloud</option>
+                      <option value="data">Data Analytics</option>
+                      <option value="va">Virtual Assistance</option>
                     </select>
                   </div>
                   <div>

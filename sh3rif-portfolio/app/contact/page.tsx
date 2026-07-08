@@ -41,7 +41,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-400">
-            Let's discuss your project and how I can help
+            Let&apos;s talk about a project, a service need, or the next thing I&apos;m building
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export default function Contact() {
               <div className="mb-6 bg-green-500/20 border border-green-500/50 rounded-lg p-4 flex items-center">
                 <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
                 <p className="text-green-400">
-                  Message sent successfully! I'll get back to you soon.
+                  Message sent successfully! I&apos;ll get back to you soon.
                 </p>
               </div>
             )}
@@ -209,7 +209,7 @@ export default function Contact() {
               </button>
 
               <p className="text-gray-400 text-sm text-center">
-                I'll respond within 24 hours
+                I&apos;ll respond within 24 hours
               </p>
             </form>
           </div>

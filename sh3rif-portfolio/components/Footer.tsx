@@ -14,17 +14,17 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <Image 
                 src="/Images/Logo_Fav.png" 
-                alt="sh3rif Logo" 
+                alt="SharifLab Logo" 
                 width={40} 
                 height={40}
                 className="rounded-md"
               />
               <h3 className="text-xl font-bold text-white">
-                sh3rif<span className="text-cyan-400">.com</span>
+                SharifLab<span className="text-cyan-400">.dev</span>
               </h3>
             </div>
             <p className="text-gray-400 text-sm">
-              Offensive Security Practitioner building secure digital infrastructure across East Africa
+              A builder&apos;s portfolio — shipping projects in Cybersecurity, Cloud, Web Dev, Data Analytics &amp; Virtual Assistance
             </p>
           </div>
 
@@ -63,6 +63,7 @@ export default function Footer() {
               <li className="text-gray-400 text-sm">Cloud Infrastructure</li>
               <li className="text-gray-400 text-sm">Web Development</li>
               <li className="text-gray-400 text-sm">Data Analytics</li>
+              <li className="text-gray-400 text-sm">Virtual Assistance</li>
             </ul>
           </div>
 
@@ -93,7 +94,7 @@ export default function Footer() {
         {/* Social Links & Copyright */}
         <div className="mt-8 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Angole Sharif Abubakar. All rights reserved.
+            &copy; {currentYear} SharifLab — Angole Sharif Abubakar. All rights reserved.
           </p>
           
           <div className="flex gap-4">

@@ -3,8 +3,8 @@ import { Shield, Code, Cloud, Database, Award, Target } from "lucide-react";
 import TechBackground from "@/components/TechBackground";
 
 export const metadata = {
-  title: "About - Angole Sharif Abubakar",
-  description: "Learn about my journey from computer science student to offensive security practitioner and full-stack developer",
+  title: "About - SharifLab",
+  description: "Learn about SharifLab as a self-taught computer science portfolio focused on cybersecurity, cloud, web development, data analytics, and virtual assistance",
 };
 
 export default function About() {
@@ -15,10 +15,10 @@ export default function About() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            About Me
+            About SharifLab
           </h1>
           <p className="text-xl text-gray-400">
-            From curious student to cybersecurity professional
+            A self-taught computer science journey built through learning, building, and shipping
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function About() {
                 Angole Sharif Abubakar
               </h2>
               <p className="text-cyan-400 text-lg mb-4">
-                Offensive Security Practitioner | Cloud & Web Developer
+                Self-Taught Builder | Cybersecurity, Cloud, Web Dev, Data Analytics, VA
               </p>
               <p className="text-gray-300 mb-2">
                 📍 Based in Lira City, Uganda
@@ -60,20 +60,20 @@ export default function About() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
             <Target className="w-8 h-8 text-cyan-400 mr-3" />
-            Professional Summary
+            The SharifLab Story
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p className="text-lg">
-              Cybersecurity professional based in Lira City, Uganda, building toward a career as a <strong className="text-cyan-400">Red Teamer</strong> with expertise across <strong className="text-white">offensive security</strong>, <strong className="text-white">defensive security</strong>, <strong className="text-white">cloud security</strong>, and <strong className="text-white">AI security</strong>.
+              SharifLab started as a simple idea: create a place where my self-taught computer science journey could become visible, practical, and useful. I have explored and studied <strong className="text-cyan-400">Virtual Assistance</strong>, <strong className="text-white">Data Analytics</strong>, <strong className="text-white">Web Development</strong>, <strong className="text-white">Cybersecurity</strong>, and <strong className="text-white">Cloud</strong> — and now I am turning that learning into projects and services.
             </p>
             <p>
-              My approach combines both sides of cybersecurity: understanding how systems are defended and how they are attacked. I completed a <strong className="text-white">Red Team internship</strong> covering the full attack lifecycle, including reconnaissance, exploitation, post-exploitation, and professional reporting, and I continue strengthening my skills through hands-on labs, CTF competitions, and continuous self-directed learning.
+              This portfolio is not meant to pretend I have everything figured out. It is a growing space where I build, learn, and ship work by category. I am not trying to launch a full company overnight; I am building a strong foundation through real projects, useful solutions, and steady improvement.
             </p>
             <p>
-              My technical background extends to <strong className="text-white">AWS cloud infrastructure</strong>, <strong className="text-white">secure web application development</strong>, and <strong className="text-white">data analytics</strong>, giving me a practical understanding of modern attack surfaces and secure system design. I also provide cloud infrastructure, web development, and data analytics solutions to East African SMEs, applying a security-first mindset to solve real business challenges.
+              My focus is to create value across the areas I care about most: secure systems, cloud infrastructure, web applications, data-driven insights, and practical support work. As I continue to grow, SharifLab will become a better record of what I can build and what I can offer.
             </p>
             <p className="text-lg font-semibold text-white pt-4">
-              My mission: Become a Red Teamer capable of assessing and strengthening applications, cloud environments, and AI systems by combining deep offensive expertise with a solid understanding of defensive security.
+              The mission is simple: keep learning, keep shipping, and let each project strengthen the next step.
             </p>
           </div>
         </section>
@@ -85,14 +85,14 @@ export default function About() {
             <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up">
               <h3 className="text-xl font-semibold text-cyan-400 mb-3">Security First</h3>
               <p className="text-gray-300">
-                Every system I build or assess starts with security in mind. Whether it's a web application, 
+                Every system I build or assess starts with security in mind. Whether it&apos;s a web application, 
                 cloud infrastructure, or data pipeline, I design with threat modeling and defense in depth.
               </p>
             </div>
             <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.1s'}}>
               <h3 className="text-xl font-semibold text-cyan-400 mb-3">Continuous Learning</h3>
               <p className="text-gray-300">
-                Cybersecurity is always evolving. I'm active on CTF platforms (HTB, THM, TCM, picoCTF), 
+                Cybersecurity is always evolving. I&apos;m active on CTF platforms (HTB, THM, TCM, picoCTF), 
                 constantly learning new exploitation techniques, and working toward industry certifications.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function About() {
             <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/20 transform hover:scale-105 transition-all hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.3s'}}>
               <h3 className="text-xl font-semibold text-cyan-400 mb-3">Local Impact</h3>
               <p className="text-gray-300">
-                East African businesses deserve world-class security and technology. I'm committed to helping 
+                East African businesses deserve world-class security and technology. I&apos;m committed to helping 
                 local organizations build resilient, secure digital systems.
               </p>
             </div>
@@ -255,9 +255,7 @@ export default function About() {
           <div className="bg-gradient-to-r from-cyan-500/10 to-cyan-500/10 border border-cyan-500/30 rounded-lg p-8 text-center animate-pulse-glow">
             <h2 className="text-3xl font-bold text-white mb-4">Current Focus</h2>
             <p className="text-gray-300 text-lg mb-6">
-              Building my offensive security expertise through hands-on practice, CTF challenges, and real-world 
-              penetration testing while offering cloud, web development, and data analytics services to support 
-              East African businesses.
+              Building SharifLab one project at a time by combining self-study with practical work in cybersecurity, cloud, web development, data analytics, and virtual assistance.
             </p>
             <p className="text-cyan-400 font-semibold text-xl">
               Goal: Become a recognized cybersecurity professional within the next 6+ months

@@ -25,12 +25,12 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white hover:text-cyan-400 transition-colors">
             <Image 
               src="/Images/Logo_Fav.png" 
-              alt="sh3rif Logo" 
+              alt="SharifLab Logo" 
               width={32} 
               height={32}
               className="rounded-md"
             />
-            sh3rif<span className="text-cyan-400">.com</span>
+            SharifLab<span className="text-cyan-400">.dev</span>
           </Link>
 
           {/* Desktop Navigation */}

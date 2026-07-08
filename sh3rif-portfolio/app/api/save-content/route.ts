@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { mkdir, writeFile } from "fs/promises";
 import path from "path";
+import { timingSafeEqual } from "crypto";
 
 export const runtime = "nodejs";
 
@@ -10,9 +11,11 @@ const GITHUB_REPO = process.env.GITHUB_REPO || process.env.GITHUB_REPO_NAME || "
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
 
 function verifyAuth(request: NextRequest): boolean {
-  const authHeader = request.headers.get("x-admin-auth");
+  const authHeader = request.headers.get("x-admin-auth") ?? "";
   const adminPassword = process.env.ADMIN_PASSWORD || "sh3rif2026";
-  return authHeader === adminPassword;
+  const a = Buffer.from(authHeader);
+  const b = Buffer.from(adminPassword);
+  return a.length === b.length && timingSafeEqual(a, b);
 }
 
 async function githubFetch(endpoint: string, options: RequestInit = {}) {
@@ -100,7 +103,12 @@ export async function POST(request: NextRequest) {
 
     if (GITHUB_TOKEN) {
       await updateGithubFile(filePath, fileContents, `Admin saved ${type}`);
-      return NextResponse.json({ success: true, message: "Content saved to GitHub repository." });
+      // Trigger Netlify rebuild — URL comes only from env, never user input (SSRF safe)
+      const buildHook = process.env.NETLIFY_BUILD_HOOK;
+      if (buildHook && buildHook.startsWith("https://api.netlify.com/")) {
+        await fetch(buildHook, { method: "POST" });
+      }
+      return NextResponse.json({ success: true, message: "Saved & rebuild triggered. Site will update in ~1 minute." });
     }
 
     const localPath = path.join(process.cwd(), filePath);

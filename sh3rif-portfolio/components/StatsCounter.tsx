@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import statsData from "@/data/stats.json";
+
+const GITHUB_RAW = "https://raw.githubusercontent.com/sharif-eng/D3FcON/main/sh3rif-portfolio/data";
 
 interface Stat {
   label: string;
@@ -11,81 +12,53 @@ interface Stat {
 }
 
 export default function StatsCounter() {
-  const [counts, setCounts] = useState({
-    projects: 0,
-    clients: 0,
-    ctf: 0,
-    experience: 0,
-  });
-
-  const targetStats: Stat[] = statsData.stats;
+  const [stats, setStats] = useState<Stat[]>([]);
+  const [counts, setCounts] = useState<number[]>([]);
 
   useEffect(() => {
-    const duration = 2000; // 2 seconds animation
-    const steps = 60;
-    const interval = duration / steps;
+    fetch(`${GITHUB_RAW}/stats.json?t=${Date.now()}`, { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data) => {
+        const loaded: Stat[] = data.stats || [];
+        setStats(loaded);
+        setCounts(loaded.map(() => 0));
 
-    let currentStep = 0;
+        const duration = 2000;
+        const steps = 60;
+        const interval = duration / steps;
+        let currentStep = 0;
 
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
+        const timer = setInterval(() => {
+          currentStep++;
+          const progress = currentStep / steps;
+          setCounts(loaded.map((s) => Math.floor(s.value * progress)));
+          if (currentStep >= steps) {
+            clearInterval(timer);
+            setCounts(loaded.map((s) => s.value));
+          }
+        }, interval);
 
-      setCounts({
-        projects: Math.floor(targetStats[0].value * progress),
-        clients: Math.floor(targetStats[1].value * progress),
-        ctf: Math.floor(targetStats[2].value * progress),
-        experience: Math.floor(targetStats[3].value * progress),
-      });
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        // Set final values to ensure accuracy
-        setCounts({
-          projects: targetStats[0].value,
-          clients: targetStats[1].value,
-          ctf: targetStats[2].value,
-          experience: targetStats[3].value,
-        });
-      }
-    }, interval);
-
-    return () => clearInterval(timer);
+        return () => clearInterval(timer);
+      })
+      .catch(() => {});
   }, []);
+
+  if (!stats.length) return null;
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div className="bg-slate-800/50 p-6 rounded-lg border border-cyan-500/30 text-center">
-        <div className="text-4xl mb-2">{targetStats[0].icon}</div>
-        <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">
-          {counts.projects}{targetStats[0].suffix}
+      {stats.map((stat, i) => (
+        <div
+          key={stat.label}
+          className={`bg-slate-800/50 p-6 rounded-lg border ${i === 0 ? "border-cyan-500/30" : "border-slate-700/50"} text-center`}
+        >
+          <div className="text-4xl mb-2">{stat.icon}</div>
+          <div className={`text-3xl md:text-4xl font-bold mb-2 ${i === 0 ? "text-cyan-400" : "text-white"}`}>
+            {counts[i] ?? 0}{stat.suffix}
+          </div>
+          <div className="text-gray-400 text-sm">{stat.label}</div>
         </div>
-        <div className="text-gray-400 text-sm">{targetStats[0].label}</div>
-      </div>
-
-      <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 text-center">
-        <div className="text-4xl mb-2">{targetStats[1].icon}</div>
-        <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-          {counts.clients}{targetStats[1].suffix}
-        </div>
-        <div className="text-gray-400 text-sm">{targetStats[1].label}</div>
-      </div>
-
-      <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 text-center">
-        <div className="text-4xl mb-2">{targetStats[2].icon}</div>
-        <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-          {counts.ctf}{targetStats[2].suffix}
-        </div>
-        <div className="text-gray-400 text-sm">{targetStats[2].label}</div>
-      </div>
-
-      <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50 text-center">
-        <div className="text-4xl mb-2">{targetStats[3].icon}</div>
-        <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-          {counts.experience}{targetStats[3].suffix}
-        </div>
-        <div className="text-gray-400 text-sm">{targetStats[3].label}</div>
-      </div>
+      ))}
     </div>
   );
 }

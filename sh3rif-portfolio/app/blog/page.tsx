@@ -1,15 +1,26 @@
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import TechBackground from "@/components/TechBackground";
-import blogData from "@/data/blog.json";
 
 export const metadata = {
-  title: "Blog - Angole Sharif Abubakar",
+  title: "Blog - SharifLab",
   description: "Technical articles on cybersecurity, CTF writeups, cloud infrastructure, and software development",
 };
 
-export default function Blog() {
-  const posts = blogData.posts;
+const GITHUB_RAW = "https://raw.githubusercontent.com/sharif-eng/D3FcON/main/sh3rif-portfolio/data";
+
+async function getBlogPosts() {
+  try {
+    const res = await fetch(`${GITHUB_RAW}/blog.json`, { cache: "no-store" });
+    const data = await res.json();
+    return data.posts || [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function Blog() {
+  const posts = await getBlogPosts();
 
   const categoryColors = {
     cyan: {
@@ -89,7 +100,7 @@ export default function Blog() {
             More Articles Coming Soon
           </h2>
           <p className="text-gray-400">
-            I'm regularly publishing CTF writeups, security tutorials, cloud infrastructure guides, 
+            I&apos;m regularly publishing CTF writeups, security tutorials, cloud infrastructure guides, 
             and development best practices. Check back for updates!
           </p>
         </div>
