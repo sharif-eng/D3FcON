@@ -18,7 +18,7 @@ export default function About() {
             About SharifLab
           </h1>
           <p className="text-xl text-gray-400">
-            A self-taught computer science journey built through learning, building, and shipping
+            A computer science journey shaped by continuous learning, hands-on experience, and delivering practical technology solutions.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function About() {
                 Angole Sharif Abubakar
               </h2>
               <p className="text-cyan-400 text-lg mb-4">
-                Self-Taught Builder | Cybersecurity, Cloud, Web Dev, Data Analytics, VA
+                Offensive Security Practitioner | Full-Stack Developer | AI Application Builder| Business Impact | CS Instrctor
               </p>
               <p className="text-gray-300 mb-2">
                 📍 Based in Lira City, Uganda
