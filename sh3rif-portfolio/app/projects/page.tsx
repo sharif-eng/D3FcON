@@ -90,7 +90,7 @@ export default function Projects() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {filtered.map((project, index) => {
-              const Icon = categoryIcon(project.category);
+              const Icon = categoryIcon(project.category ?? "");
               return (
                 <div
                   key={project.id}
@@ -105,7 +105,7 @@ export default function Projects() {
                     <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                     <p className="text-gray-400 text-sm mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag: string) => (
+                      {(project.tags ?? []).map((tag: string) => (
                         <span key={tag} className={`px-3 py-1 ${colorClasses.bg} ${colorClasses.text} rounded-full text-xs`}>
                           {tag}
                         </span>

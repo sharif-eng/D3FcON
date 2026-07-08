@@ -2,6 +2,16 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import TechBackground from "@/components/TechBackground";
 
+type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  content?: string;
+};
+
 export const metadata = {
   title: "Blog - SharifLab",
   description: "Technical articles on cybersecurity, CTF writeups, cloud infrastructure, and software development",
@@ -46,7 +56,7 @@ export default async function Blog() {
 
         {/* Blog Posts */}
         <div className="space-y-8">
-          {posts.map((post) => {
+          {posts.map((post: BlogPost) => {
             const colors = categoryColors.cyan;
             
             return (
