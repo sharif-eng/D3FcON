@@ -373,35 +373,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-slate-800/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-slate-900/50 rounded-lg border border-cyan-500/20 p-8 md:p-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Sharif Labs Story</h2>
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8">
-              <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>Sharif Labs began with a simple vision: to create a place where learning, experimentation, and real-world problem solving come together. What started as a personal journey in Computer Science has grown into a technology portfolio dedicated to building practical solutions across Cybersecurity, Cloud Computing, Web Development, Data Analytics, Virtual Assistance, and AI-powered applications.</p>
-                <p>Every project represents an opportunity to learn, improve, and create something meaningful. Rather than chasing perfection, Sharif Labs is built on the belief that consistent progress, hands-on experience, and delivering real solutions are what drive long-term growth.</p>
-                <p>This is more than a collection of projects. It is a living portfolio that reflects my skills, documents my journey, and demonstrates my commitment to solving real-world challenges through technology. Each solution is carefully designed, tested, and continuously improved to strengthen both my technical expertise and the value I can provide to individuals, startups, and small to medium-sized businesses.</p>
-                <p>As Sharif Labs continues to evolve, so will the range of solutions, services, and products it offers. Every project contributes to a stronger foundation, every challenge presents a new learning opportunity, and every milestone moves the vision forward.</p>
-                <p>The mission is simple: to keep learning, keep building, keep shipping, and use technology to create secure, intelligent, and practical solutions that make a meaningful impact.</p>
-              </div>
-              <div className="bg-slate-800/60 rounded-lg border border-slate-700 p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Briefcase className="w-6 h-6 text-cyan-400" />
-                  <h3 className="text-xl font-semibold text-white">What drives it</h3>
-                </div>
-                <ul className="space-y-3 text-sm text-gray-400">
-                  <li>• Build with purpose and real-world value.</li>
-                  <li>• Learn through practical experimentation.</li>
-                  <li>• Ship solutions that improve lives and work.</li>
-                  <li>• Keep growing through every project and challenge.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Learning Journey</h2>

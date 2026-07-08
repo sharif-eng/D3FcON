@@ -60,20 +60,23 @@ export default function About() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
             <Target className="w-8 h-8 text-cyan-400 mr-3" />
-            The SharifLab Story
+            The Sharif Labs Story
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p className="text-lg">
-              SharifLab started as a simple idea: create a place where my self-taught computer science journey could become visible, practical, and useful. I have explored and studied <strong className="text-cyan-400">Virtual Assistance</strong>, <strong className="text-white">Data Analytics</strong>, <strong className="text-white">Web Development</strong>, <strong className="text-white">Cybersecurity</strong>, and <strong className="text-white">Cloud</strong> — and now I am turning that learning into projects and services.
+              Sharif Labs began with a simple vision: to create a place where learning, experimentation, and real-world problem solving come together. What started as a personal journey in Computer Science has grown into a technology portfolio dedicated to building practical solutions across Cybersecurity, Cloud Computing, Web Development, Data Analytics, Virtual Assistance, and AI-powered applications.
             </p>
             <p>
-              This portfolio is not meant to pretend I have everything figured out. It is a growing space where I build, learn, and ship work by category. I am not trying to launch a full company overnight; I am building a strong foundation through real projects, useful solutions, and steady improvement.
+              Every project represents an opportunity to learn, improve, and create something meaningful. Rather than chasing perfection, Sharif Labs is built on the belief that consistent progress, hands-on experience, and delivering real solutions are what drive long-term growth.
             </p>
             <p>
-              My focus is to create value across the areas I care about most: secure systems, cloud infrastructure, web applications, data-driven insights, and practical support work. As I continue to grow, SharifLab will become a better record of what I can build and what I can offer.
+              This is more than a collection of projects. It is a living portfolio that reflects my skills, documents my journey, and demonstrates my commitment to solving real-world challenges through technology. Each solution is carefully designed, tested, and continuously improved to strengthen both my technical expertise and the value I can provide to individuals, startups, and small to medium-sized businesses.
+            </p>
+            <p>
+              As Sharif Labs continues to evolve, so will the range of solutions, services, and products it offers. Every project contributes to a stronger foundation, every challenge presents a new learning opportunity, and every milestone moves the vision forward.
             </p>
             <p className="text-lg font-semibold text-white pt-4">
-              The mission is simple: keep learning, keep shipping, and let each project strengthen the next step.
+              The mission is simple: keep learning, keep building, keep shipping, and use technology to create secure, intelligent, and practical solutions that make a meaningful impact.
             </p>
           </div>
         </section>
