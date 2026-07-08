@@ -5,7 +5,13 @@
       "title": "Red Team Internship Engagement",
       "category": "security",
       "description": "Comprehensive 3-month Red Team internship covering the complete attack lifecycle from reconnaissance to post-exploitation and detailed reporting.",
-      "tags": ["Penetration Testing", "Metasploit", "Nmap", "Burp Suite", "Red Team"],
+      "tags": [
+        "Penetration Testing",
+        "Metasploit",
+        "Nmap",
+        "Burp Suite",
+        "Red Team"
+      ],
       "image": null,
       "github": "#",
       "demo": null
@@ -15,7 +21,12 @@
       "title": "Internship Management System",
       "category": "development",
       "description": "University final year project — full-stack web application for managing student internships, company placements, and evaluation tracking.",
-      "tags": ["React", "Node.js", "MongoDB", "Full-Stack"],
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Full-Stack"
+      ],
       "image": null,
       "github": "#",
       "demo": "#"
@@ -25,7 +36,13 @@
       "title": "AWS Secure Infrastructure",
       "category": "cloud",
       "description": "Designed and deployed secure, scalable AWS cloud infrastructure for small business with proper IAM, VPC configuration, and monitoring.",
-      "tags": ["AWS", "EC2", "VPC", "Security", "Infrastructure"],
+      "tags": [
+        "AWS",
+        "EC2",
+        "VPC",
+        "Security",
+        "Infrastructure"
+      ],
       "image": null,
       "github": "#",
       "demo": null
@@ -35,17 +52,12 @@
       "title": "Business Analytics Dashboard",
       "category": "data",
       "description": "Interactive data dashboard built to visualize business KPIs, track trends, and automate reporting for a small business. Coming soon.",
-      "tags": ["Python", "Pandas", "Data Visualization", "SQL"],
-      "image": null,
-      "github": null,
-      "demo": null
-    },
-    {
-      "id": "va-workflow-automation",
-      "title": "VA Workflow Automation",
-      "category": "va",
-      "description": "Automated admin workflows including email triage, scheduling, and document management using AI-assisted tools. Coming soon.",
-      "tags": ["Automation", "AI Tools", "Productivity", "Admin"],
+      "tags": [
+        "Python",
+        "Pandas",
+        "Data Visualization",
+        "SQL"
+      ],
       "image": null,
       "github": null,
       "demo": null
