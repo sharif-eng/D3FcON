@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Github, Linkedin, Mail, Shield, Cloud, Code, Database, Bot } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Shield, Cloud, Code, Database, Bot, Sparkles, Rocket, BookOpen, Briefcase, Cpu } from "lucide-react";
 import StatsCounter from "@/components/StatsCounter";
 import VideoBackground from "@/components/VideoBackground";
 import Typewriter from "@/components/Typewriter";
@@ -19,12 +19,79 @@ async function getPlatforms() {
 
 export default async function Home() {
   const platforms = await getPlatforms();
+
+  const focusCards = [
+    {
+      title: "Build",
+      description: "I design and develop practical solutions that solve real-world problems across multiple technology domains.",
+      icon: Rocket,
+    },
+    {
+      title: "Test",
+      description: "I continuously improve every project through experimentation, cybersecurity research, and hands-on learning.",
+      icon: Shield,
+    },
+    {
+      title: "Ship",
+      description: "I believe technology creates value only when it reaches users, so every completed project is documented, deployed, and shared.",
+      icon: Sparkles,
+    },
+  ];
+
+  const currentFocusItems = [
+    { title: "Building Sharif Labs Website", status: "Active Development", icon: Rocket },
+    { title: "SecureLens AI", status: "Planning", icon: Cpu },
+    { title: "Cybersecurity Research", status: "Ongoing", icon: Shield },
+    { title: "Open Source Contributions", status: "Growing", icon: BookOpen },
+  ];
+
+  const services = [
+    {
+      title: "Cybersecurity",
+      description: "Practical security reviews, research, and risk reduction for individuals and modern teams.",
+      deliverables: ["Security assessments", "Threat review", "Secure recommendations"],
+      href: "/contact",
+    },
+    {
+      title: "Web Development",
+      description: "Modern, responsive web experiences built with performance, clarity, and usability in mind.",
+      deliverables: ["Landing pages", "Portfolio sites", "Business tools"],
+      href: "/contact",
+    },
+    {
+      title: "Cloud Engineering",
+      description: "Reliable cloud solutions that support growth, resilience, and efficient operations.",
+      deliverables: ["AWS setup", "Infrastructure planning", "Deployment support"],
+      href: "/contact",
+    },
+    {
+      title: "Data Analytics",
+      description: "Clear, insight-driven dashboards and reporting that help turn data into action.",
+      deliverables: ["Dashboards", "Reporting workflows", "Insights"],
+      href: "/contact",
+    },
+    {
+      title: "Virtual Assistance",
+      description: "Structured support for operations, research, admin workflows, and online productivity.",
+      deliverables: ["Research support", "Admin workflow help", "Documentation"],
+      href: "/contact",
+    },
+  ];
+
+  const learningMilestones = [
+    "Started Computer Science",
+    "Built first full-stack application",
+    "Completed cybersecurity training",
+    "Red Team internship",
+    "Founded Sharif Labs",
+    "Current focus",
+  ];
+
   return (
     <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
         <VideoBackground opacity={0.4} />
-        
+
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 -z-10">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen filter blur-3xl animate-blob"></div>
@@ -34,19 +101,18 @@ export default async function Home() {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2 animate-fade-in">
-            SharifLab
-          </h1>
-          <p className="text-base text-gray-400 mb-4 animate-fade-in">by Angole Sharif Abubakar</p>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2 animate-fade-in">Sharif Labs</h1>
+          <p className="text-base text-gray-400 mb-4 animate-fade-in">Founded by Angole Sharif Abubakar</p>
           <div className="text-xl md:text-2xl text-cyan-400 mb-4 animate-fade-in-delay-1 min-h-[2rem]">
-            <Typewriter 
+            <Typewriter
               texts={[
                 "Cybersecurity Practitioner",
-                "Cloud Engineer (AWS)",
-                "Full-Stack Web Developer",
+                "AI Application Builder",
+                "Full-Stack Developer",
+                "Cloud Enthusiast",
                 "Data Analyst",
                 "Virtual Assistant",
-                "Self-Taught CS Builder"
+                "Technical Instructor",
               ]}
               typingSpeed={80}
               deletingSpeed={50}
@@ -54,181 +120,123 @@ export default async function Home() {
             />
           </div>
           <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in-delay-2">
-            SharifLab is a growing self-taught computer science portfolio where I build, test, and ship projects across Cybersecurity, Cloud, Web Development, Data Analytics, and Virtual Assistance.
+            Sharif Labs is where I build, test, and ship practical technology solutions across cybersecurity, cloud engineering, software development, data analytics, AI-powered automation, and technical education. Every project reflects my commitment to solving real-world problems, continuous learning, and helping individuals, startups, and small-to-medium businesses leverage technology effectively.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-delay-3">
-            <Link
-              href="/projects"
-              className="inline-flex items-center px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105"
-            >
-              View Projects
+            <Link href="/projects" className="inline-flex items-center px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105">
+              Explore My Work
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105"
-            >
-              Get in Touch
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105">
+              Work With Me
             </Link>
           </div>
 
           <div className="flex gap-6 justify-center animate-fade-in-delay-4">
-            <a href="mailto:sharifidris8@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              <Mail className="w-6 h-6" />
-            </a>
-            <a href="https://github.com/sharif-eng" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="https://www.linkedin.com/in/angole-sharif-abubakar/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              <Linkedin className="w-6 h-6" />
-            </a>
+            <a href="mailto:sharifidris8@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors"><Mail className="w-6 h-6" /></a>
+            <a href="https://github.com/sharif-eng" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors"><Github className="w-6 h-6" /></a>
+            <a href="https://www.linkedin.com/in/angole-sharif-abubakar/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors"><Linkedin className="w-6 h-6" /></a>
           </div>
         </div>
       </section>
 
-      {/* What SharifLab Is */}
       <section className="py-16 px-4 bg-slate-900/40">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          <div className="bg-slate-800/50 rounded-lg border border-cyan-500/20 p-6">
-            <h3 className="text-xl font-semibold text-white mb-3">A Learning Lab</h3>
-            <p className="text-gray-400 text-sm">This portfolio is where I turn self-study into visible progress by building and shipping projects in public.</p>
-          </div>
-          <div className="bg-slate-800/50 rounded-lg border border-cyan-500/20 p-6">
-            <h3 className="text-xl font-semibold text-white mb-3">A Growing Service Space</h3>
-            <p className="text-gray-400 text-sm">I am building toward offering practical help in cybersecurity, cloud, web development, data analytics, and virtual assistance.</p>
-          </div>
-          <div className="bg-slate-800/50 rounded-lg border border-cyan-500/20 p-6">
-            <h3 className="text-xl font-semibold text-white mb-3">A Project Archive</h3>
-            <p className="text-gray-400 text-sm">Each project is added by category as I learn, improve, and expand what SharifLab can offer.</p>
-          </div>
+          {focusCards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <div key={card.title} className="bg-slate-800/50 rounded-lg border border-cyan-500/20 p-6 hover:border-cyan-500/50 transition-all transform hover:scale-105">
+                <div className="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-cyan-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{card.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Skills Section */}
       <section className="py-20 px-4 bg-slate-800/50">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">
-              Track Record
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">Track Record</h2>
             <StatsCounter />
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-            Core Competencies
-          </h2>
-          
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Core Competencies</h2>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {/* Offensive Security */}
             <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up">
               <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
-                <Image 
-                  src="/Images/Cybersecurity_Service_Image.png" 
-                  alt="Cybersecurity Services"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/Images/Cybersecurity_Service_Image.png" alt="Cybersecurity Services" fill className="object-cover" />
               </div>
               <Shield className="w-12 h-12 text-cyan-400 mb-4 animate-float" />
               <h3 className="text-xl font-semibold text-white mb-3">Cybersecurity</h3>
               <ul className="text-gray-400 space-y-2 text-sm">
-                <li>• Penetration Testing</li>
-                <li>• Vulnerability Assessment</li>
-                <li>• Red Team Operations</li>
-                <li>• Security Auditing</li>
-                <li>• GRC Consulting</li>
+                <li>• Security reviews that reduce risk and protect growth.</li>
+                <li>• Research-driven testing and practical hardening.</li>
+                <li>• Clear recommendations for safer systems and teams.</li>
               </ul>
             </div>
 
-            {/* Cloud */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.1s'}}>
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{ animationDelay: "0.1s" }}>
               <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
-                <Image 
-                  src="/Images/Cloud_Service_Image.png" 
-                  alt="Cloud Infrastructure"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/Images/Cloud_Service_Image.png" alt="Cloud Infrastructure" fill className="object-cover" />
               </div>
-              <Cloud className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{animationDelay: '0.5s'}} />
-              <h3 className="text-xl font-semibold text-white mb-3">Cloud (AWS)</h3>
+              <Cloud className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{ animationDelay: "0.5s" }} />
+              <h3 className="text-xl font-semibold text-white mb-3">Cloud Engineering</h3>
               <ul className="text-gray-400 space-y-2 text-sm">
-                <li>• Solutions Architecture</li>
-                <li>• Cloud Migration</li>
-                <li>• Infrastructure as Code</li>
-                <li>• Security-First Design</li>
-                <li>• Cost Optimization</li>
+                <li>• Scalable cloud foundations for modern products.</li>
+                <li>• Deployment and architecture support with security in mind.</li>
+                <li>• Better reliability, efficiency, and long-term growth.</li>
               </ul>
             </div>
 
-            {/* Web Development */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.2s'}}>
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{ animationDelay: "0.2s" }}>
               <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
-                <Image 
-                  src="/Images/Web_Dev_Service_Image.jpg" 
-                  alt="Web Development"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/Images/Web_Dev_Service_Image.jpg" alt="Web Development" fill className="object-cover" />
               </div>
-              <Code className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{animationDelay: '1s'}} />
+              <Code className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{ animationDelay: "1s" }} />
               <h3 className="text-xl font-semibold text-white mb-3">Web Development</h3>
               <ul className="text-gray-400 space-y-2 text-sm">
-                <li>• Full-Stack Development</li>
-                <li>• Secure API Design</li>
-                <li>• E-commerce Solutions</li>
-                <li>• Business Systems</li>
-                <li>• AI-Integrated Apps</li>
+                <li>• Professional digital products that communicate value clearly.</li>
+                <li>• Secure, responsive experiences for users and clients.</li>
+                <li>• Practical tools that support business goals.</li>
               </ul>
             </div>
 
-            {/* Data Analytics */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.3s'}}>
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{ animationDelay: "0.3s" }}>
               <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
-                <Image 
-                  src="/Images/Data_Analytics_Service_Image.png" 
-                  alt="Data Analytics"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/Images/Data_Analytics_Service_Image.png" alt="Data Analytics" fill className="object-cover" />
               </div>
-              <Database className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{animationDelay: '1.5s'}} />
+              <Database className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{ animationDelay: "1.5s" }} />
               <h3 className="text-xl font-semibold text-white mb-3">Data Analytics</h3>
               <ul className="text-gray-400 space-y-2 text-sm">
-                <li>• Business Intelligence</li>
-                <li>• Data Visualization</li>
-                <li>• Analytics Dashboards</li>
-                <li>• Report Automation</li>
-                <li>• Insights & Strategy</li>
+                <li>• Data storytelling that supports decision-making.</li>
+                <li>• Dashboards and reporting for measurable progress.</li>
+                <li>• Useful insights for growth, improvement, and planning.</li>
               </ul>
             </div>
 
-            {/* Virtual Assistance */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{animationDelay: '0.4s'}}>
-              <Bot className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{animationDelay: '2s'}} />
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+              <Bot className="w-12 h-12 text-cyan-400 mb-4 animate-float" style={{ animationDelay: "2s" }} />
               <h3 className="text-xl font-semibold text-white mb-3">Virtual Assistance</h3>
               <ul className="text-gray-400 space-y-2 text-sm">
-                <li>• Admin & Scheduling</li>
-                <li>• Research & Reports</li>
-                <li>• Email Management</li>
-                <li>• Data Entry & Docs</li>
-                <li>• AI-Assisted Tasks</li>
+                <li>• Reliable support for admin, research, and execution.</li>
+                <li>• Structured workflows that reduce friction and save time.</li>
+                <li>• Thoughtful assistance that helps ideas move forward.</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Preview */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-gray-400 text-center mb-12">
-            A growing collection of real projects across all five focus areas — each one added as I learn, build, and ship more.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">Featured Projects</h2>
+          <p className="text-gray-400 text-center mb-12">A growing collection of practical work across security, development, cloud, data, and automation.</p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 animate-scale-in">
@@ -237,96 +245,182 @@ export default async function Home() {
                 <Shield className="w-20 h-20 text-cyan-400 relative z-10 group-hover:scale-110 transition-transform" />
               </div>
               <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Live</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-gray-500">Security</span>
+                </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Red Team Internship</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  3-month comprehensive engagement covering reconnaissance, exploitation, post-exploitation, and reporting
-                </p>
+                <p className="text-gray-400 text-sm mb-4">Applied offensive security practice with real-world reporting and hands-on execution.</p>
+                <p className="text-cyan-300 text-sm mb-4">Impact: strengthened technical depth through structured research and practical testing.</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Metasploit</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Nmap</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Burp Suite</span>
                 </div>
-                <Link href="/projects/red-team-internship" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">
-                  View Details →
-                </Link>
+                <div className="flex gap-3">
+                  <a href="https://github.com/sharif-eng" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">GitHub</a>
+                  <Link href="/projects/red-team-internship" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">Details →</Link>
+                </div>
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 animate-scale-in" style={{animationDelay: '0.1s'}}>
+            <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 animate-scale-in" style={{ animationDelay: "0.1s" }}>
               <div className="h-48 bg-gradient-to-br from-cyan-500/20 to-slate-900 flex items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-cyan-500/10 group-hover:bg-cyan-500/20 transition-all"></div>
                 <Code className="w-20 h-20 text-cyan-400 relative z-10 group-hover:scale-110 transition-transform" />
               </div>
               <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Research</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-gray-500">Development</span>
+                </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Internship Management System</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  University final year project — full-stack web application for managing student internships
-                </p>
+                <p className="text-gray-400 text-sm mb-4">A full-stack platform that supports workflow clarity, accountability, and process visibility.</p>
+                <p className="text-cyan-300 text-sm mb-4">Impact: demonstrated how product thinking can improve operational systems.</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">React</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Node.js</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">MongoDB</span>
                 </div>
-                <Link href="/projects/internship-management" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">
-                  View Details →
-                </Link>
+                <div className="flex gap-3">
+                  <a href="https://github.com/sharif-eng" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">GitHub</a>
+                  <Link href="/projects/internship-management" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">Details →</Link>
+                </div>
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 animate-scale-in" style={{animationDelay: '0.2s'}}>
+            <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 animate-scale-in" style={{ animationDelay: "0.2s" }}>
               <div className="h-48 bg-gradient-to-br from-cyan-500/20 to-slate-900 flex items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-cyan-500/10 group-hover:bg-cyan-500/20 transition-all"></div>
                 <Cloud className="w-20 h-20 text-cyan-400 relative z-10 group-hover:scale-110 transition-transform" />
               </div>
               <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">In Progress</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-gray-500">Cloud</span>
+                </div>
                 <h3 className="text-xl font-semibold text-white mb-2">AWS Secure Infrastructure</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  Designed and deployed secure, scalable cloud infrastructure for small business
-                </p>
+                <p className="text-gray-400 text-sm mb-4">A secure cloud foundation designed to support reliable deployment and future scaling.</p>
+                <p className="text-cyan-300 text-sm mb-4">Impact: strengthened the path toward dependable modern infrastructure.</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">AWS</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">EC2</span>
                   <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">VPC</span>
                 </div>
-                <Link href="/projects/aws-infrastructure" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">
-                  View Details →
-                </Link>
+                <div className="flex gap-3">
+                  <a href="https://github.com/sharif-eng" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">GitHub</a>
+                  <Link href="/projects/aws-infrastructure" className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">Details →</Link>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="text-center">
-            <Link
-              href="/projects"
-              className="inline-flex items-center px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all"
-            >
-              View All Projects
+            <Link href="/projects" className="inline-flex items-center px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all">
+              Explore More Projects
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTF Activity */}
+      <section className="py-20 px-4 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-4 mb-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Current Focus</h2>
+              <p className="text-gray-400 max-w-2xl">A clear view of the ideas, experiments, and projects currently shaping Sharif Labs.</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {currentFocusItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="bg-slate-900/50 rounded-lg border border-cyan-500/20 p-6 hover:border-cyan-500/50 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <p className="text-sm text-cyan-300 mb-2">{item.status}</p>
+                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Services</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">Professional support and technical delivery across the areas I am actively building and refining.</p>
+          </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-6">
+            {services.map((service) => (
+              <div key={service.title} className="bg-slate-800/50 rounded-lg border border-slate-700 p-6 hover:border-cyan-500/50 transition-all">
+                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-gray-400 text-sm mb-4">{service.description}</p>
+                <ul className="space-y-2 text-sm text-gray-300 mb-6">
+                  {service.deliverables.map((item) => (
+                    <li key={item} className="flex items-start"><span className="text-cyan-400 mr-2">•</span>{item}</li>
+                  ))}
+                </ul>
+                <Link href={service.href} className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-semibold text-sm">Request Service <ArrowRight className="ml-2 w-4 h-4" /></Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
+          <div className="bg-slate-900/50 rounded-lg border border-cyan-500/20 p-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Build In Public</h2>
+            <p className="text-gray-400 mb-6">A live pulse on the work that is being tested, improved, and shared publicly.</p>
+            <div className="space-y-4">
+              <div className="rounded-lg border border-slate-700 p-4"><p className="text-cyan-300 font-semibold mb-1">Current experiments</p><p className="text-gray-400 text-sm">Exploring practical AI-assisted workflows, secure automation patterns, and modern product ideas.</p></div>
+              <div className="rounded-lg border border-slate-700 p-4"><p className="text-cyan-300 font-semibold mb-1">Projects in development</p><p className="text-gray-400 text-sm">Building tools, experiments, and portfolio projects that reflect real-world use cases.</p></div>
+              <div className="rounded-lg border border-slate-700 p-4"><p className="text-cyan-300 font-semibold mb-1">Recently shipped projects</p><p className="text-gray-400 text-sm">Documenting completed work openly and keeping each project visible as it evolves.</p></div>
+              <div className="rounded-lg border border-slate-700 p-4"><p className="text-cyan-300 font-semibold mb-1">Upcoming ideas</p><p className="text-gray-400 text-sm">Continuing to expand the portfolio with stronger products, research, and technical education.</p></div>
+            </div>
+          </div>
+          <div className="bg-slate-900/50 rounded-lg border border-cyan-500/20 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Briefcase className="w-6 h-6 text-cyan-400" />
+              <h3 className="text-xl font-semibold text-white">Why this matters</h3>
+            </div>
+            <p className="text-gray-400 leading-relaxed">Sharif Labs is built to show momentum. It is not about pretending to be a massive company. It is about proving capability, sharing progress, and creating trust through visible work.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Learning Journey</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {learningMilestones.map((milestone, index) => (
+              <div key={milestone} className="bg-slate-800/50 rounded-lg border border-slate-700 p-6 hover:border-cyan-500/50 transition-all">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-cyan-400 text-sm font-semibold">0{index + 1}</span>
+                  <BookOpen className="w-5 h-5 text-cyan-400" />
+                </div>
+                <p className="text-white font-medium">{milestone}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 px-4 bg-slate-800/50 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Active CTF Participant
-          </h2>
-          <p className="text-gray-400 mb-12">
-            Continuously sharpening offensive security skills through Capture The Flag challenges
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Research & Practice</h2>
+          <p className="text-gray-400 mb-12">Learning through security practice, experimentation, and public problem solving.</p>
         </div>
         <div className="relative overflow-hidden">
           <div className="flex gap-12 animate-marquee whitespace-nowrap">
             {[...platforms, ...platforms].map((platform, i) => (
-              <a
-                key={`${platform.id}-${i}`}
-                href={platform.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex flex-col items-center gap-3 group flex-shrink-0"
-              >
+              <a key={`${platform.id}-${i}`} href={platform.url} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-3 group flex-shrink-0">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-slate-700 group-hover:border-cyan-500 transition-all group-hover:shadow-lg group-hover:shadow-cyan-500/30">
                   <Image src={platform.logo} alt={platform.name} width={80} height={80} className="w-full h-full object-cover" />
                 </div>
@@ -337,19 +431,11 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Let&apos;s Build Something
-          </h2>
-          <p className="text-gray-400 text-lg mb-8">
-            Currently building and growing SharifLab through projects and service-based work in Cybersecurity, Cloud, Web Development, Data Analytics, and Virtual Assistance.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let&apos;s Build Something</h2>
+          <p className="text-gray-400 text-lg mb-8">Sharif Labs is growing through thoughtful projects, useful services, and public progress. If you want to collaborate, hire, or explore a technical idea, I would love to hear from you.</p>
+          <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-all transform hover:scale-105">
             Start a Conversation
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
