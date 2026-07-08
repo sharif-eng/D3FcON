@@ -9,6 +9,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_API_TOKEN;
 const GITHUB_OWNER = process.env.GITHUB_OWNER || process.env.GITHUB_REPO_OWNER || "sharif-eng";
 const GITHUB_REPO = process.env.GITHUB_REPO || process.env.GITHUB_REPO_NAME || "D3FcON";
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
+const GITHUB_CONTENT_PATH = process.env.GITHUB_CONTENT_PATH || "sh3rif-portfolio/data";
 
 function verifyAuth(request: NextRequest): boolean {
   const authHeader = request.headers.get("x-admin-auth") ?? "";
@@ -98,7 +99,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
-    const filePath = `data/${filename}`;
+    const filePath = `${GITHUB_CONTENT_PATH}/${filename}`.replace(/^\/+/, "");
     const fileContents = JSON.stringify(content, null, 2);
 
     if (GITHUB_TOKEN) {
