@@ -31,21 +31,6 @@
       "image": null,
       "github": "#",
       "demo": null
-    },
-    {
-      "id": "data-analytics-dashboard",
-      "title": "Business Analytics Dashboard",
-      "category": "data",
-      "description": "Interactive data dashboard built to visualize business KPIs, track trends, and automate reporting for a small business. Coming soon.",
-      "tags": [
-        "Python",
-        "Pandas",
-        "Data Visualization",
-        "SQL"
-      ],
-      "image": null,
-      "github": null,
-      "demo": null
     }
   ]
 }
