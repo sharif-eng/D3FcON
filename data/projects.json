@@ -46,21 +46,6 @@
       "image": null,
       "github": null,
       "demo": null
-    },
-    {
-      "id": "va-workflow-automation",
-      "title": "VA Workflow Automation",
-      "category": "va",
-      "description": "Automated admin workflows including email triage, scheduling, and document management using AI-assisted tools. Coming soon.",
-      "tags": [
-        "Automation",
-        "AI Tools",
-        "Productivity",
-        "Admin"
-      ],
-      "image": null,
-      "github": null,
-      "demo": null
     }
   ]
 }
