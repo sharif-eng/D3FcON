@@ -61,6 +61,20 @@
       "image": null,
       "github": null,
       "demo": null
+    },
+    {
+      "id": "2",
+      "title": "Palz Hotel Lira",
+      "category": "development",
+      "description": "✨Just launched!✨\nPalz Hotel Lira , a premium hotel experience in Lira City.\n✅ 20 room types from Standard to Villa Suite\n✅ Rooftop pool & fitness center\n✅ Fine dining & conference facilities\n✅ 24/7 concierge & free shuttle",
+      "tags": [
+        "Comfort",
+        "Safety",
+        "Luxury"
+      ],
+      "github": "https://sharif-eng.github.io/SharifLabs/SharifLabs-Web/Palz%20Hotel%20Lira/",
+      "demo": "https://sharif-eng.github.io/SharifLabs/SharifLabs-Web/Palz%20Hotel%20Lira/",
+      "image": null
     }
   ]
 }
